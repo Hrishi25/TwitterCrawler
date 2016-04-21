@@ -7,7 +7,7 @@ import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.Table;
 
 public class CrawlerDAO {
-	private static String tableName = "Twitter";
+	private static String tableName = "twitter_data";
 	
 	public static void loadTweets(QueryResult result) {
 		DynamoDB dynamoDB = Utils.getDynamoDBInstance();
@@ -15,7 +15,7 @@ public class CrawlerDAO {
 		
 		Item item = new Item()
         .withPrimaryKey("key", "1")
-        .withString("popularBrands", "Book 101 Title");
+        .withString("popularBrands", result.getTweets().get(0).getText());
 		
 		table.putItem(item);
 	}
