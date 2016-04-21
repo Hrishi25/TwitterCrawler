@@ -1,6 +1,6 @@
-package com.yahoo.research.bcn;
+package test.java.com.yahoo.research.bcn;
 
-import static org.junit.Assert.*;
+/*import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,4 +28,4 @@ public class TwitterCrawlerTest {
         assertTrue("No results", results.length() > 0);
         System.out.println(results);
     }
-}
+}*/

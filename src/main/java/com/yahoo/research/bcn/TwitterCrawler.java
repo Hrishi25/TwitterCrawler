@@ -1,4 +1,4 @@
-package com.yahoo.research.bcn;
+package main.java.com.yahoo.research.bcn;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,7 +17,7 @@ import twitter4j.TwitterException;
 
 public class TwitterCrawler {
 
-    public static void main(String[] args) throws IOException {
+   /* public static void main(String[] args) throws IOException {
 
         if (args.length < 2) {
             System.err.println("Usage: Crawler <input_file> <output_file>");
@@ -157,5 +157,5 @@ public class TwitterCrawler {
         consecutiveErrors = 0; // reset retry counter
         retry = true;
     }
-
+*/
 }

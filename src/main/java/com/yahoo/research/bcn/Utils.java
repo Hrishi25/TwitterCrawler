@@ -1,4 +1,4 @@
-package com.yahoo.research.bcn;
+package main.java.com.yahoo.research.bcn;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;

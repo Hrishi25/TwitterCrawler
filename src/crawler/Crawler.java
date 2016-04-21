@@ -1,20 +1,21 @@
 package crawler;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import twitter4j.CursorSupport;
-import twitter4j.IDs;
+import twitter4j.Query;
+import twitter4j.QueryResult;
+import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
 public class Crawler {
-
+	public static void main(String[] args) throws IOException, TwitterException {
+		final Twitter twitter = Utils.getTwitterInstance();
+	    
+	    Query query = new Query("Fashion");
+	    QueryResult result = twitter.search(query);
+	    for (Status status : result.getTweets()) {
+	        System.out.println("@" + status.getUser().getScreenName() + ":" + status.getText());
+	    }
+	    CrawlerDAO.loadTweets(result);
+	}
 }
