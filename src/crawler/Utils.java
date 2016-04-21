@@ -21,13 +21,17 @@ public class Utils {
     	return twitter;
     }
     public static DynamoDB getDynamoDBInstance() {
-    	AmazonDynamoDBClient client = new AmazonDynamoDBClient(new BasicAWSCredentials("AKIAJ5BSIE7EMETRCAKQ", "o9Z1mmudBQoY25ulKFBii/wgHvTnClHSSi811/XN"));
+    	return new DynamoDB(getAmazonDynamoDBClient());
+    }
+    
+    public static AmazonDynamoDBClient getAmazonDynamoDBClient() {
+AmazonDynamoDBClient client = new AmazonDynamoDBClient(new BasicAWSCredentials("AKIAJ5BSIE7EMETRCAKQ", "o9Z1mmudBQoY25ulKFBii/wgHvTnClHSSi811/XN"));
     	
 		client.setEndpoint("http://dynamodb.us-west-2.amazonaws.com");
 		 
 		client.setSignerRegionOverride("us-west-2");
 		
-	    return new DynamoDB(client);
+	    return client;
     }
 }
 
