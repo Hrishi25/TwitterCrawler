@@ -11,15 +11,15 @@ body {
 }
 
 div.table-title {
-   display: block;
+  display: block;
   margin: auto;
   max-width: 600px;
   padding:5px;
   width: 100%;
 }
 
-.table-title h3 {
-   color: #fafafa;
+.table-title h2 {
+   color: #FFFFFF;
    font-size: 30px;
    font-weight: 400;
    font-style:normal;
@@ -45,12 +45,12 @@ div.table-title {
 }
  
 th {
-  color:#D5DDE5;;
-  background:#1b1e24;
+  color:#FFFFFF;
+  background:#FF9933;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
   font-size:23px;
-  font-weight: 100;
+  font-weight: bold;
   padding:24px;
   text-align:left;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
