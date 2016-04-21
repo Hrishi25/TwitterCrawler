@@ -5,8 +5,12 @@ function coolMessage() {
 	alert("Cool message");
 };
 
+/** 
+ * Scan the table when the page loads.
+ */
 window.onload=function() {
-	scanTable();
+	scanTwitterTable();
+	scanBrandsTable();
 };
 
 /**
@@ -21,19 +25,64 @@ var dynamodb = new AWS.DynamoDB({
 });
 
 /**
- * Scan DynamoDB Table for items
+ * Scan DynamoDB Table for twitter items
  */
-var params = {
+var twitterParams = {
 		TableName: 'twitter_data', /* required */
 		Select: 'ALL_ATTRIBUTES'
 };
 
-function scanTable() {
-	alert("scanning table");
-	var twitterItems = dynamodb.scan(params, function(err, data) {
+function scanTwitterTable() {
+	var twitterItems;
+	dynamodb.scan(twitterParams, function(err, data) {
 		if (err) console.log(err, err.stack); // an error occurred
-		else     console.log(data);           // successful response
+		else {     
+//			console.log(data);  
+//			console.log(data.Items);
+			var numItems = data.Count;
+			twitterItems = data.Items;
+			
+			updateTableDisplay(twitterItems, numItems);
+
+
+		}// successful response
 	});
-	console.log(twitterItems);
+};
+
+/**
+ * Scan DynamoDB table for current seller items
+ */
+var catalogParams = {
+		TableName: 'product_catalog', /* required */
+		Select: 'ALL_ATTRIBUTES'
+};
+
+function scanBrandsTable() {
+	alert("scanning catalog table");
+	var catalogEntries;
+	dynamodb.scan(catalogParams, function(err, data) {
+		if (err) {
+			console.log(err, err.stack); 
+		}// an error occurred
+		else {     
+			console.log("Catalog! ");
+			console.log(data);
+			catalogEntries = data.Items;
+		}// successful response
+	});
+};
+
+/**
+ * Update the table to display twitter items.
+ */
+function updateTableDisplay(twitterItems, numItems) {
+	var rowName = 'row';
+	var columnName = 'column0';
+	for (var i = 0; i < 5; i++) {
+		var cellName = rowName + i + columnName;
+		var brand = twitterItems[i].popularBrands;
+		console.log(brand.S);
+		document.getElementById(cellName).innerHTML = brand.S;
+	};
 };
 
