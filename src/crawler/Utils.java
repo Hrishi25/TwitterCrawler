@@ -23,10 +23,8 @@ public class Utils {
     public static DynamoDB getDynamoDBInstance() {
     	AmazonDynamoDBClient client = new AmazonDynamoDBClient(new BasicAWSCredentials("AKIAJ5BSIE7EMETRCAKQ", "o9Z1mmudBQoY25ulKFBii/wgHvTnClHSSi811/XN"));
     	
-		// Make sure you use the same port as you configured DynamoDB Local to bind to.
 		client.setEndpoint("http://dynamodb.us-west-2.amazonaws.com");
 		 
-		// Sign requests for the "local" region to read data written by the toolkit.
 		client.setSignerRegionOverride("us-west-2");
 		
 	    return new DynamoDB(client);

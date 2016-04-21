@@ -1,6 +1,7 @@
 package crawler;
 
 import twitter4j.QueryResult;
+import twitter4j.Status;
 
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Item;
@@ -13,10 +14,12 @@ public class CrawlerDAO {
 		DynamoDB dynamoDB = Utils.getDynamoDBInstance();
 		Table table = dynamoDB.getTable(tableName);
 		
-		Item item = new Item()
-        .withPrimaryKey("key", "1")
-        .withString("popularBrands", result.getTweets().get(0).getText());
-		
-		table.putItem(item);
+		for (Status status : result.getTweets()) {
+			Item item = new Item()
+	        .withPrimaryKey("key", status.getText());
+	        //.withString("popularBrands", result.getTweets().get(0).getText());
+			
+			table.putItem(item);
+		}
 	}
 }
