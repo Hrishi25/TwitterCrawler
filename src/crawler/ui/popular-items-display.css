@@ -28,6 +28,11 @@ div.table-title {
    text-transform:uppercase;
 }
 
+.table-title h3 {
+	color: #FFFFFF;
+	font-weight: normal;
+}
+
 
 /*** Table Styles **/
 
